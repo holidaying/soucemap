@@ -1,6 +1,8 @@
 # soucemap
 12种sourcemap打包分析
-品质说明(quality)
+
+* 品质说明(quality)
+
 打包后的代码 - 将所有生成的代码视为一大块代码。你看不到相互分离的模块。
 
 生成后的代码 - 每个模块相互分离，并用模块名称进行注释。可以看到 webpack 生成的代码。示例：你会看到类似 var module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(42); module__WEBPACK_IMPORTED_MODULE_1__.a();，而不是 import {test} from "module"; test();。
@@ -13,7 +15,7 @@
 
 （仅限行） - source map 被简化为每行一个映射。这通常意味着每个语句只有一个映射（假设你使用这种方式）。这会妨碍你在语句级别上调试执行，也会妨碍你在每行的一些列上设置断点。与压缩后的代码组合后，映射关系是不可能实现的，因为压缩工具通常只会输出一行。
 
-对于开发环境
+* 对于开发环境
 以下选项非常适合开发环境：
 
 eval - 每个模块都使用 eval() 执行，并且都有 //@ sourceURL。此选项会非常快地构建。主要缺点是，由于会映射到转换后的代码，而不是映射到原始代码（没有从 loader 中获取 source map），所以不能正确的显示行数。
@@ -37,7 +39,7 @@ cheap-module-source-map - 没有列映射(column mapping)的 source map，将 lo
 
 inline-cheap-module-source-map - 类似 cheap-module-source-map，但是 source mapp 转换为 DataUrl 添加到 bundle 中。
 
-对于生产环境
+* 对于生产环境
 这些选项通常用于生产环境中：
 
 (none)（省略 devtool 选项） - 不生成 source map。这是一个不错的选择。
